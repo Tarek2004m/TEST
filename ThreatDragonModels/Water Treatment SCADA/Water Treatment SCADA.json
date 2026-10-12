@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "2.6.2",
   "summary": {
     "title": "Water Treatment SCADA",
     "owner": "Tarek",
@@ -9,7 +9,7 @@
     "contributors": [],
     "diagrams": [
       {
-        "version": "2.0",
+        "version": "2.6.2",
         "title": "Water Treatment SCADA DFD",
         "description": "Screenshot-based conceptual model. Observed: public interface, pH/flow/dosing, Pump 2, Auto, history and RFB Authentication disabled. Assumed: backend, PLC, sensors, historian and writable control paths (*). RFB access permissions, protocols, segmentation and safety controls are unverified. Boundaries express trust changes, not confirmed firewalls. Encryption flags are not evidence of absent encryption. All threats remain Open because controls are proposed, not verified.",
         "diagramType": "STRIDE",
@@ -17,8 +17,92 @@
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "cells": [
           {
+            "shape": "trust-boundary-curve",
+            "attrs": {
+              "line": {
+                "targetMarker": "",
+                "sourceMarker": ""
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "TB1 External access / supervisory system",
+              "description": "Analytical trust boundary, not evidence of an installed firewall.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "TB1 External access / supervisory system"
+                  }
+                },
+                "position": 0.15
+              }
+            ],
+            "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
+            "source": {
+              "x": 320,
+              "y": 25
+            },
+            "target": {
+              "x": 320,
+              "y": 245
+            },
+            "vertices": []
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "attrs": {
+              "line": {
+                "targetMarker": "",
+                "sourceMarker": ""
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "TB2 Supervisory / local control",
+              "description": "Analytical trust boundary, not evidence of an installed firewall.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              {
+                "attrs": {
+                  "label": {
+                    "text": "TB2 Supervisory / local control"
+                  }
+                },
+                "position": 0.15
+              }
+            ],
+            "id": "551d0325-f4d0-438e-944a-c3e97479b391",
+            "source": {
+              "x": 30,
+              "y": 510
+            },
+            "target": {
+              "x": 990,
+              "y": 510
+            },
+            "vertices": []
+          },
+          {
             "position": {
-              "x": 80,
+              "x": 30,
               "y": 60
             },
             "size": {
@@ -43,8 +127,91 @@
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "actor",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "212b4f1c-4b5f-47cc-a765-74ae8e0b1065"
+                },
+                {
+                  "group": "right",
+                  "id": "d13d2390-6b57-4c80-b257-30cde7295187"
+                },
+                {
+                  "group": "bottom",
+                  "id": "56e847ff-f9f5-4cdb-b62e-c93e51ac683b"
+                },
+                {
+                  "group": "left",
+                  "id": "52239a1f-d460-4462-8d8c-6a9e40c58856"
+                }
+              ]
+            },
             "id": "5f30ac1f-193d-4337-a6a6-d043f4043b11",
             "data": {
               "name": "Web user",
@@ -85,8 +252,91 @@
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "process",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "233758af-a77a-4130-8e6e-eed2b4145662"
+                },
+                {
+                  "group": "right",
+                  "id": "09e2c5fb-be74-4378-8aba-39f8ed73a3f4"
+                },
+                {
+                  "group": "bottom",
+                  "id": "da831bb6-72b4-43e8-8d43-986a99a36781"
+                },
+                {
+                  "group": "left",
+                  "id": "ce585612-d2ac-45cf-8ce8-8eb11040ab68"
+                }
+              ]
+            },
             "id": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923",
             "data": {
               "name": "Web HMI /\nremote display",
@@ -175,8 +425,91 @@
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "process",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "5ea4e32d-5953-4d8d-9217-ad156bcfe877"
+                },
+                {
+                  "group": "right",
+                  "id": "5421a6ea-b760-416c-82f0-8770bcc67568"
+                },
+                {
+                  "group": "bottom",
+                  "id": "a1065d7e-133d-4b00-93db-1d4192360d25"
+                },
+                {
+                  "group": "left",
+                  "id": "8cfdda22-6b39-473c-8890-9082772c5181"
+                }
+              ]
+            },
             "id": "c9cceeb4-9d4a-416c-86f6-c52b13c89728",
             "data": {
               "name": "SCADA backend\n[assumed]",
@@ -228,7 +561,7 @@
           },
           {
             "position": {
-              "x": 760,
+              "x": 30,
               "y": 300
             },
             "size": {
@@ -245,17 +578,98 @@
                 "strokeDasharray": ""
               },
               "topLine": {
-                "stroke": "#333333",
                 "strokeDasharray": ""
               },
               "bottomLine": {
-                "stroke": "#333333",
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "store",
-            "id": "80153f24-b900-4525-8d28-24df7ffa20af",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "4001006e-77b7-4c9c-a4a6-9bc482353ac1"
+                },
+                {
+                  "group": "right",
+                  "id": "a58123b7-8d79-4e95-abae-9b0d265ea395"
+                },
+                {
+                  "group": "bottom",
+                  "id": "cd841124-416c-4322-af98-922c83b574b3"
+                },
+                {
+                  "group": "left",
+                  "id": "19c8c038-6e8e-4a02-a3b4-fdaf327639bf"
+                }
+              ]
+            },
+            "id": "80153f24-b900-4525-8d28-24df7ffa20af",
             "data": {
               "name": "Historical data\n[assumed]",
               "description": "History is visible; a separate database/product is not confirmed.",
@@ -335,8 +749,91 @@
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "process",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "5fc13054-b9c6-4069-9c7a-d7d318a91f13"
+                },
+                {
+                  "group": "right",
+                  "id": "fde9aa52-f7b3-401e-80ee-7d75e3c52990"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8c777760-4ff0-467b-a62d-9506506d80c5"
+                },
+                {
+                  "group": "left",
+                  "id": "03421e9e-861d-4093-94e2-c97c70fa1d71"
+                }
+              ]
+            },
             "id": "523b07dc-26c4-4c9a-b319-38c69866d55d",
             "data": {
               "name": "PLC / controller\n[assumed]",
@@ -376,8 +873,8 @@
           },
           {
             "position": {
-              "x": 80,
-              "y": 800
+              "x": 30,
+              "y": 560
             },
             "size": {
               "width": 160,
@@ -401,8 +898,91 @@
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "actor",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "6a3ba158-6cdc-4294-b0f0-227de4c4f775"
+                },
+                {
+                  "group": "right",
+                  "id": "3007fbdf-e019-4bea-a559-c84e820c073f"
+                },
+                {
+                  "group": "bottom",
+                  "id": "a0566452-a6ed-4106-9fd9-c93c7d027ed8"
+                },
+                {
+                  "group": "left",
+                  "id": "b37cf72e-8b73-48d7-bb20-030be17493b2"
+                }
+              ]
+            },
             "id": "a3b120ca-eb71-4919-8ed5-58ed343fa81f",
             "data": {
               "name": "pH / flow sensors\n[assumed]",
@@ -418,8 +998,8 @@
           },
           {
             "position": {
-              "x": 760,
-              "y": 800
+              "x": 400,
+              "y": 790
             },
             "size": {
               "width": 160,
@@ -443,8 +1023,91 @@
                 "strokeDasharray": ""
               }
             },
+            "visible": true,
             "shape": "actor",
             "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "cdf7e19a-c88e-410b-9ad3-f68431aa4087"
+                },
+                {
+                  "group": "right",
+                  "id": "d7f6f78b-0a63-4dda-99d5-b2839a96f526"
+                },
+                {
+                  "group": "bottom",
+                  "id": "02cc2f55-c6ab-4b0d-90f1-d0d57db29b92"
+                },
+                {
+                  "group": "left",
+                  "id": "15b30102-5050-48ca-a8a4-ba863cc2ac92"
+                }
+              ]
+            },
             "id": "a473ce1f-676f-4a73-a220-7b077afb775b",
             "data": {
               "name": "Dosing pump\n[assumed]",
@@ -479,25 +1142,27 @@
               "name": "F1 View / input requests",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": true,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "9d261b58-0fd0-4e39-b4a9-6c015c3ef3df",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F1 View / input requests"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "9d261b58-0fd0-4e39-b4a9-6c015c3ef3df",
             "source": {
               "cell": "5f30ac1f-193d-4337-a6a6-d043f4043b11"
             },
@@ -527,11 +1192,13 @@
               "name": "F2 Screen / process values",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": true,
-              "hasOpenThreats": true,
+              "protocol": "",
               "threats": [
                 {
                   "id": "4aedb8f5-4c0d-4a42-9511-10195dff4b1f",
@@ -558,19 +1225,19 @@
                   "mitigation": "Require TLS or an encrypted VPN with endpoint verification; disable direct unprotected remote-display access."
                 }
               ],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "4d9b10c5-f616-414a-b2b9-596d5aece674",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F2 Screen / process values"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "4d9b10c5-f616-414a-b2b9-596d5aece674",
             "source": {
               "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
             },
@@ -580,11 +1247,11 @@
             "vertices": [
               {
                 "x": 320,
-                "y": 220
+                "y": 190
               },
               {
                 "x": 160,
-                "y": 220
+                "y": 230
               }
             ]
           },
@@ -609,25 +1276,27 @@
               "name": "F3 Queries / commands*",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "afeabab8-8315-45fe-97ee-bfc79a1dd58a",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F3 Queries / commands*"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "afeabab8-8315-45fe-97ee-bfc79a1dd58a",
             "source": {
               "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
             },
@@ -657,25 +1326,27 @@
               "name": "F4 Values / alarms",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "3a08a3fb-1026-4cb4-96b7-eec6b1b9fd7d",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F4 Values / alarms"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "3a08a3fb-1026-4cb4-96b7-eec6b1b9fd7d",
             "source": {
               "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
             },
@@ -685,11 +1356,11 @@
             "vertices": [
               {
                 "x": 640,
-                "y": 350
+                "y": 260
               },
               {
                 "x": 640,
-                "y": 110
+                "y": 160
               }
             ]
           },
@@ -714,25 +1385,27 @@
               "name": "F5 Record / query history",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "27173705-b36e-4247-a8af-7e2e00e132b5",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F5 Record / query history"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "27173705-b36e-4247-a8af-7e2e00e132b5",
             "source": {
               "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
             },
@@ -762,25 +1435,27 @@
               "name": "F6 Historical values",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "f24a87a7-680c-412a-9dfe-b715a56e3cd2",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F6 Historical values"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "f24a87a7-680c-412a-9dfe-b715a56e3cd2",
             "source": {
               "cell": "80153f24-b900-4525-8d28-24df7ffa20af"
             },
@@ -789,12 +1464,12 @@
             },
             "vertices": [
               {
-                "x": 840,
-                "y": 460
+                "x": 290,
+                "y": 420
               },
               {
-                "x": 480,
-                "y": 460
+                "x": 370,
+                "y": 420
               }
             ]
           },
@@ -819,11 +1494,13 @@
               "name": "F7 Setpoints / mode*",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": true,
+              "protocol": "",
               "threats": [
                 {
                   "id": "26a36c66-ef67-4396-8e65-8420dfc38216",
@@ -838,19 +1515,19 @@
                   "mitigation": "Authorise writes server-side, authenticate command sources and enforce approved setpoint bounds in the PLC with independent safety interlocks."
                 }
               ],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "13e193c6-b4d0-497a-a5df-ec7e58688e5a",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F7 Setpoints / mode*"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "13e193c6-b4d0-497a-a5df-ec7e58688e5a",
             "source": {
               "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
             },
@@ -877,100 +1554,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F8 Measurements / status",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "protocol": "",
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "hasOpenThreats": true,
-              "threats": [
-                {
-                  "id": "1ead4de2-9215-4738-846b-aeec332c0a6e",
-                  "threatId": "8937aea3-7f47-45ef-87ab-7cd3dfc3b789",
-                  "number": 2,
-                  "title": "T02 Fake controller telemetry",
-                  "type": "Spoofing",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "If device identity is not checked, a host on the control network can impersonate the PLC and report normal pH while conditions are unsafe.",
-                  "mitigation": "Authenticate endpoints where supported; restrict peers and ports; use a secure gateway for legacy devices and compare independent measurements."
-                },
-                {
-                  "id": "8c92218b-76ff-46f0-979c-5dbb441a9260",
-                  "threatId": "e508eba6-7fdd-47ba-b20e-25513107f06c",
-                  "number": 5,
-                  "title": "T05 Modified or replayed measurements",
-                  "type": "Tampering",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "A network attacker can alter or replay old measurements so that the HMI conceals an abnormal process.",
-                  "mitigation": "Use integrity-protected transport where supported, timestamps or sequence checks, stale-data alarms and independent process checks."
-                }
-              ],
-              "isTrustBoundary": false
-            },
-            "id": "1a5fc703-5510-4944-8d1f-9de6cb72a150",
-            "labels": [
-              {
-                "position": 0.5,
-                "attrs": {
-                  "label": {
-                    "text": "F8 Measurements / status"
-                  }
-                }
-              }
-            ],
-            "source": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
-            },
-            "target": {
-              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
-            },
-            "vertices": [
-              {
-                "x": 650,
-                "y": 610
-              },
-              {
-                "x": 650,
-                "y": 510
-              },
-              {
-                "x": 600,
-                "y": 510
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "F9 pH / flow measurements",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": true,
+              "protocol": "",
               "threats": [
                 {
                   "id": "6084835d-5258-4ce1-ac54-fbea3892320f",
@@ -985,19 +1578,19 @@
                   "mitigation": "Protect cabinets and wiring; inventory sensor identities; check calibration and compare redundant sensors."
                 }
               ],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "25a5cc68-18bb-41e0-889b-62614a5269b3",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F9 pH / flow measurements"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "25a5cc68-18bb-41e0-889b-62614a5269b3",
             "source": {
               "cell": "a3b120ca-eb71-4919-8ed5-58ed343fa81f"
             },
@@ -1027,25 +1620,27 @@
               "name": "F10 Dosing control",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "73fb669f-2786-4dbc-ac96-7e4736042341",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F10 Dosing control"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "73fb669f-2786-4dbc-ac96-7e4736042341",
             "source": {
               "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
             },
@@ -1075,25 +1670,27 @@
               "name": "F11 Pump status*",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
+              "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "protocol": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "hasOpenThreats": false,
+              "protocol": "",
               "threats": [],
-              "isTrustBoundary": false
+              "trustBoundaryIds": []
             },
-            "id": "d5d1b215-b2ed-475f-be98-719f84e19c89",
             "labels": [
               {
-                "position": 0.5,
                 "attrs": {
                   "label": {
                     "text": "F11 Pump status*"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
+            "id": "d5d1b215-b2ed-475f-be98-719f84e19c89",
             "source": {
               "cell": "a473ce1f-676f-4a73-a220-7b077afb775b"
             },
@@ -1102,12 +1699,12 @@
             },
             "vertices": [
               {
-                "x": 840,
-                "y": 940
+                "x": 610,
+                "y": 800
               },
               {
                 "x": 690,
-                "y": 940
+                "y": 760
               },
               {
                 "x": 690,
@@ -1116,84 +1713,187 @@
             ]
           },
           {
-            "shape": "trust-boundary-curve",
+            "shape": "flow",
             "attrs": {
               "line": {
-                "targetMarker": "",
-                "sourceMarker": ""
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": ""
               }
             },
             "width": 200,
             "height": 100,
-            "zIndex": 1,
+            "zIndex": 3,
             "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F8 Measurements / status",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "1ead4de2-9215-4738-846b-aeec332c0a6e",
+                  "threatId": "8937aea3-7f47-45ef-87ab-7cd3dfc3b789",
+                  "number": 2,
+                  "title": "T02 Fake controller telemetry",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "If device identity is not checked, a host on the control network can impersonate the PLC and report normal pH while conditions are unsafe.",
+                  "mitigation": "Authenticate endpoints where supported; restrict peers and ports; use a secure gateway for legacy devices and compare independent measurements."
+                },
+                {
+                  "id": "8c92218b-76ff-46f0-979c-5dbb441a9260",
+                  "threatId": "e508eba6-7fdd-47ba-b20e-25513107f06c",
+                  "number": 5,
+                  "title": "T05 Modified or replayed measurements",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "A network attacker can alter or replay old measurements so that the HMI conceals an abnormal process.",
+                  "mitigation": "Use integrity-protected transport where supported, timestamps or sequence checks, stale-data alarms and independent process checks."
+                }
+              ],
+              "trustBoundaryIds": []
+            },
             "labels": [
               {
-                "position": 0.15,
                 "attrs": {
                   "label": {
-                    "text": "TB1 External access / supervisory system"
+                    "text": "F8 Measurements / status"
                   }
-                }
+                },
+                "position": 0.5
               }
             ],
-            "data": {
-              "type": "tm.Boundary",
-              "name": "TB1 External access / supervisory system",
-              "description": "Analytical trust boundary, not evidence of an installed firewall.",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
+            "id": "1a5fc703-5510-4944-8d1f-9de6cb72a150",
             "source": {
-              "x": 320,
-              "y": 25
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
             },
             "target": {
-              "x": 320,
-              "y": 245
+              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
             },
-            "vertices": []
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "attrs": {
-              "line": {
-                "targetMarker": "",
-                "sourceMarker": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 1,
-            "connector": "smooth",
-            "labels": [
+            "vertices": [
               {
-                "position": 0.15,
-                "attrs": {
-                  "label": {
-                    "text": "TB2 Supervisory / local control"
-                  }
-                }
+                "x": 610,
+                "y": 560
+              },
+              {
+                "x": 670,
+                "y": 500
+              },
+              {
+                "x": 630,
+                "y": 440
               }
             ],
-            "data": {
-              "type": "tm.Boundary",
-              "name": "TB2 Supervisory / local control",
-              "description": "Analytical trust boundary, not evidence of an installed firewall.",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "551d0325-f4d0-438e-944a-c3e97479b391",
-            "source": {
-              "x": 30,
-              "y": 510
-            },
-            "target": {
-              "x": 990,
-              "y": 510
-            },
-            "vertices": []
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           }
         ]
       }
