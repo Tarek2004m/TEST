@@ -409,12 +409,12 @@
             },
             "attrs": {
               "text": {
-                "text": "SCADA backend\n[assumed]"
+                "text": "SCADA server"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "strokeDasharray": ""
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
               },
               "topLine": {
                 "stroke": "#333333",
@@ -512,7 +512,7 @@
             },
             "id": "c9cceeb4-9d4a-416c-86f6-c52b13c89728",
             "data": {
-              "name": "SCADA backend\n[assumed]",
+              "name": "SCADA server",
               "description": "Logical monitoring and supervisory service; may share a host with the HMI.",
               "type": "tm.Process",
               "isTrustBoundary": false,
@@ -570,7 +570,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Historical data\n[assumed]"
+                "text": "Database"
               },
               "body": {
                 "stroke": "#333333",
@@ -578,10 +578,14 @@
                 "strokeDasharray": ""
               },
               "topLine": {
-                "strokeDasharray": ""
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeDasharray": ""
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
               }
             },
             "visible": true,
@@ -671,7 +675,7 @@
             },
             "id": "80153f24-b900-4525-8d28-24df7ffa20af",
             "data": {
-              "name": "Historical data\n[assumed]",
+              "name": "Database",
               "description": "History is visible; a separate database/product is not confirmed.",
               "type": "tm.Store",
               "isTrustBoundary": false,
@@ -733,12 +737,12 @@
             },
             "attrs": {
               "text": {
-                "text": "PLC / controller\n[assumed]"
+                "text": "Controller"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "strokeDasharray": ""
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
               },
               "topLine": {
                 "stroke": "#333333",
@@ -836,7 +840,7 @@
             },
             "id": "523b07dc-26c4-4c9a-b319-38c69866d55d",
             "data": {
-              "name": "PLC / controller\n[assumed]",
+              "name": "Controller",
               "description": "Local control logic, receives measurements and operates dosing equipment.",
               "type": "tm.Process",
               "isTrustBoundary": false,
@@ -882,12 +886,12 @@
             },
             "attrs": {
               "text": {
-                "text": "pH / flow sensors\n[assumed]"
+                "text": "Sensors"
               },
               "body": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
-                "strokeDasharray": ""
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
               },
               "topLine": {
                 "stroke": "#333333",
@@ -985,7 +989,7 @@
             },
             "id": "a3b120ca-eb71-4919-8ed5-58ed343fa81f",
             "data": {
-              "name": "pH / flow sensors\n[assumed]",
+              "name": "Sensors",
               "description": "Physical measurement sources represented as external entities relative to software.",
               "type": "tm.Actor",
               "isTrustBoundary": false,
@@ -1007,12 +1011,12 @@
             },
             "attrs": {
               "text": {
-                "text": "Dosing pump\n[assumed]"
+                "text": "Pump 2"
               },
               "body": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
-                "strokeDasharray": ""
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
               },
               "topLine": {
                 "stroke": "#333333",
@@ -1110,7 +1114,7 @@
             },
             "id": "a473ce1f-676f-4a73-a220-7b077afb775b",
             "data": {
-              "name": "Dosing pump\n[assumed]",
+              "name": "Pump 2",
               "description": "Actuator interface; Pump 2 is visible, wiring/protocol unknown.",
               "type": "tm.Actor",
               "isTrustBoundary": false,
