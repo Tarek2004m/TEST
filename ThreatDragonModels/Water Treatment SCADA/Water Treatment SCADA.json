@@ -528,48 +528,50 @@
                   "id": "165797bb-1322-461f-b6cb-f98cbe0e57a1",
                   "threatId": "a3918509-d5b2-4643-b98a-a461ba7ca286",
                   "number": 7,
-                  "title": "T07 Unattributable control changes",
+                  "title": "Missing change logs",
                   "type": "Repudiation",
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "If setpoint or mode changes are not linked to named accounts and timestamps, an operator or intruder can deny performing them.",
-                  "mitigation": "Use individual accounts; audit actor, old/new value, result and synchronised time for each control change; send logs to a protected collector."
+                  "description": "If setting changes are not logged, a user could change the dosing settings and deny doing it. It would be difficult to find out who made the change.",
+                  "mitigation": "Log each setting change with the username, time, old value and new value. Protect the logs from being changed or deleted.",
+                  "new": false
                 },
                 {
                   "id": "4762979e-605d-46a6-93b4-44250adab9fb",
                   "threatId": "78fe3a74-bc54-414d-8591-b63afaa80e10",
                   "number": 9,
-                  "title": "T09 Deleted incident evidence",
+                  "title": "Deleted logs",
                   "type": "Repudiation",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "A compromised backend can delete local audit records and prevent reliable reconstruction of events.",
-                  "mitigation": "Forward logs promptly to a separate restricted collector with append-only retention and alert on gaps or time changes.",
+                  "description": "An attacker with access to the server could delete logs to hide their actions. This would make it difficult to find out what happened and who was responsible.",
+                  "mitigation": "Use firewall rules to allow only necessary connections to the controller. Limit network traffic and keep local pump control working if the server connection is lost.",
                   "new": false
                 },
                 {
                   "id": "8dcef9a2-be3a-48cd-a133-190794555f63",
                   "threatId": "3bc0a017-1483-4aae-be57-75c453f4f078",
                   "number": 17,
-                  "title": "T17 Backend compromise gains host privileges",
+                  "title": "Changing controller program",
                   "type": "Elevation of privilege",
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "An exploitable backend running with excessive OS privileges can give an attacker control over the host and supervisory functions.",
-                  "mitigation": "Patch through a tested OT change process, run as a restricted service account and restrict executable code and management interfaces."
+                  "description": "If programming access is not restricted, someone with network access could gain permission to change the controller program. This could change how the pump operates and cause incorrect dosing.",
+                  "mitigation": "Require authentication and only allow approved administrator accounts to change the program. Use firewall rules to allow programming connections only from approved computers.",
+                  "new": false
                 }
               ],
               "hasOpenThreats": true,
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
-                "repudiation": 1,
+                "repudiation": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 0
+                "elevationOfPrivilege": 1
               }
             }
           },
@@ -700,44 +702,53 @@
                   "id": "c9e31be3-634c-4775-a304-a4f87d3875b7",
                   "threatId": "c53df80e-9ddf-40e6-a22b-7cb8ca855224",
                   "number": 6,
-                  "title": "T06 Changed historical records",
+                  "title": "Changed stored data",
                   "type": "Tampering",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "An attacker with write access can edit pH and dosing history, hiding an incident or misleading later decisions.",
-                  "mitigation": "Restrict database writers, record changes in an append-only audit trail and retain protected backups."
+                  "description": "Someone with write access could change stored pH or dosing measurements. This could hide a problem and make the history shown to operators incorrect.",
+                  "mitigation": "Only give write access to accounts that need it. Log changes to stored measurements and keep protected backups.",
+                  "new": false
                 },
                 {
                   "id": "d815a150-847a-40e8-ab2a-469823d05b04",
                   "threatId": "5aec416f-0d82-4445-be7b-a64a242de92a",
                   "number": 12,
-                  "title": "T12 Unauthorised history access",
+                  "title": "Reading private data",
                   "type": "Information disclosure",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "Excessive database privileges can expose detailed operational trends beyond what a user should see.",
-                  "mitigation": "Restrict database access to the backend, use limited service accounts and enforce authorised history queries."
+                  "description": "A user with more database access than needed could read stored measurements they are not allowed to see. This could reveal information about how the plant operates.",
+                  "mitigation": "Limit read access to the data each account needs. Only allow approved accounts and the SCADA server to connect to the database.",
+                  "new": false
                 },
                 {
                   "id": "5d3ca763-c0d7-4f30-a2e4-7420ab144385",
                   "threatId": "26a057df-cb9d-4169-b1c9-cdbc01cb58c2",
                   "number": 15,
-                  "title": "T15 History storage exhaustion",
+                  "title": "Storage full",
                   "type": "Denial of service",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "Unbounded retention or excessive writes can fill history storage and stop recording or disrupt dependent services.",
-                  "mitigation": "Apply retention and capacity limits, alert before exhaustion and isolate history storage failures from local control."
+                  "description": "An attacker could cause many records to be saved until the database storage is full. This could stop new measurements from being stored and make history unavailable.",
+                  "mitigation": "Limit how much data can be saved at once. Monitor free storage and send a warning before it is full. Remove old records according to a retention plan.",
+                  "new": false
                 }
               ],
               "hasOpenThreats": true,
               "isALog": false,
               "storesCredentials": false,
               "isEncrypted": false,
-              "isSigned": false
+              "isSigned": false,
+              "threatFrequency": {
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 2
+              }
             }
           },
           {
@@ -865,28 +876,38 @@
                   "id": "fc4f4d47-f4e3-441e-96ec-1d32d8902f3a",
                   "threatId": "fbdf40a0-58f2-4a10-819f-989345deb24b",
                   "number": 14,
-                  "title": "T14 Controller communication overload",
+                  "title": "Too much network traffic",
                   "type": "Denial of service",
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "Excess traffic reaching a controller can interrupt telemetry or command handling and impair process control.",
-                  "mitigation": "Segment the control network with allowlisted traffic and rate controls; keep autonomous local control and test safe behaviour on lost communication."
+                  "description": "An attacker could send too much network traffic to the controller. This could prevent it from receiving settings or sending measurements to the SCADA server.",
+                  "mitigation": "Use firewall rules to allow only necessary connections to the controller. Limit incoming traffic. Keep local pump control working if the connection to the SCADA server is lost.",
+                  "new": false
                 },
                 {
                   "id": "b59fe08f-2ce5-47a2-9f72-608e2d0e65fc",
                   "threatId": "9e0c7866-37d2-414d-a90f-fec48107829f",
                   "number": 18,
-                  "title": "T18 Unauthorised controller programming",
+                  "title": "Changing controller program",
                   "type": "Elevation of privilege",
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "A host with ordinary network access can become able to change PLC logic if programming functions lack access control.",
-                  "mitigation": "Allow programming only from approved engineering stations; enable controller access protection and audit approved logic changes; lock programming when operationally possible."
+                  "description": "If programming access is not protected, an attacker with network access could gain permission to change the controller program. This could make the pump add the wrong amount of chemicals.",
+                  "mitigation": "Require login and check permissions before allowing program changes. Only allow programming connections from approved computers.",
+                  "new": false
                 }
               ],
-              "hasOpenThreats": true
+              "hasOpenThreats": true,
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -1296,149 +1317,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Settings",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "26a36c66-ef67-4396-8e65-8420dfc38216",
-                  "threatId": "20e6402d-fe95-4968-a6f4-9331460dd62d",
-                  "number": 4,
-                  "title": "T04 Altered dosing setpoint",
-                  "type": "Tampering",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "An attacker able to modify supervisory commands can change the chemical setpoint or operating mode. This requires a writable control path.",
-                  "mitigation": "Authorise writes server-side, authenticate command sources and enforce approved setpoint bounds in the PLC with independent safety interlocks."
-                }
-              ],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Settings"
-            ],
-            "id": "13e193c6-b4d0-497a-a5df-ec7e58688e5a",
-            "source": {
-              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
-            },
-            "target": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Measurements",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "1ead4de2-9215-4738-846b-aeec332c0a6e",
-                  "threatId": "8937aea3-7f47-45ef-87ab-7cd3dfc3b789",
-                  "number": 2,
-                  "title": "T02 Fake controller telemetry",
-                  "type": "Spoofing",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "If device identity is not checked, a host on the control network can impersonate the PLC and report normal pH while conditions are unsafe.",
-                  "mitigation": "Authenticate endpoints where supported; restrict peers and ports; use a secure gateway for legacy devices and compare independent measurements."
-                },
-                {
-                  "id": "8c92218b-76ff-46f0-979c-5dbb441a9260",
-                  "threatId": "e508eba6-7fdd-47ba-b20e-25513107f06c",
-                  "number": 5,
-                  "title": "T05 Modified or replayed measurements",
-                  "type": "Tampering",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "A network attacker can alter or replay old measurements so that the HMI conceals an abnormal process.",
-                  "mitigation": "Use integrity-protected transport where supported, timestamps or sequence checks, stale-data alarms and independent process checks."
-                }
-              ],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Measurements"
-            ],
-            "id": "1a5fc703-5510-4944-8d1f-9de6cb72a150",
-            "source": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
-            },
-            "target": {
-              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
-            },
-            "vertices": [
-              {
-                "x": 610,
-                "y": 560
-              },
-              {
-                "x": 670,
-                "y": 500
-              },
-              {
-                "x": 630,
-                "y": 440
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -1477,65 +1355,6 @@
             },
             "target": {
               "cell": "80153f24-b900-4525-8d28-24df7ffa20af"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "pH / water flow",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "6084835d-5258-4ce1-ac54-fbea3892320f",
-                  "threatId": "feda0f68-b6f3-413d-bc8f-6c357b49af37",
-                  "number": 3,
-                  "title": "T03 Substituted sensor source",
-                  "type": "Spoofing",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "A replaced or emulated sensor can supply plausible but false pH or flow values, causing incorrect dosing.",
-                  "mitigation": "Protect cabinets and wiring; inventory sensor identities; check calibration and compare redundant sensors."
-                }
-              ],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "pH / water flow"
-            ],
-            "id": "25a5cc68-18bb-41e0-889b-62614a5269b3",
-            "source": {
-              "cell": "a3b120ca-eb71-4919-8ed5-58ed343fa81f"
-            },
-            "target": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
             },
             "vertices": []
           },
@@ -1708,6 +1527,227 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "Measurements",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "1ead4de2-9215-4738-846b-aeec332c0a6e",
+                  "threatId": "8937aea3-7f47-45ef-87ab-7cd3dfc3b789",
+                  "number": 2,
+                  "title": "Fake controller",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "If the server does not check where measurements come from, an attacker could pretend to be the controller and send false values. Operators could then believe the water treatment is working normally.",
+                  "mitigation": "Check the controller's identity before accepting measurements. Use firewall rules to only allow the expected controller connection.",
+                  "new": false
+                },
+                {
+                  "id": "8c92218b-76ff-46f0-979c-5dbb441a9260",
+                  "threatId": "e508eba6-7fdd-47ba-b20e-25513107f06c",
+                  "number": 5,
+                  "title": "Changed measurements",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "An attacker could change measurements sent from the controller to the SCADA server. For example, a false pH value could hide a problem with the water treatment.",
+                  "mitigation": "Protect the connection against changes to data, using authenticated encryption where supported. Check measurement timestamps and warn operators when data is old or outside expected limits.",
+                  "new": false
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Measurements"
+            ],
+            "id": "1a5fc703-5510-4944-8d1f-9de6cb72a150",
+            "source": {
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
+            },
+            "target": {
+              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
+            },
+            "vertices": [
+              {
+                "x": 610,
+                "y": 560
+              },
+              {
+                "x": 670,
+                "y": 500
+              },
+              {
+                "x": 630,
+                "y": 440
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Settings",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "26a36c66-ef67-4396-8e65-8420dfc38216",
+                  "threatId": "20e6402d-fe95-4968-a6f4-9331460dd62d",
+                  "number": 4,
+                  "title": "Changed pump settings",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "If settings can be sent to the controller, an attacker could change them during transmission. This could make the pump add too much or too little chemical to the water.",
+                  "mitigation": "Protect the connection against changes to data. Only accept settings from the authorised SCADA server. Set safe dosing limits in the controller.",
+                  "new": false
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Settings"
+            ],
+            "id": "13e193c6-b4d0-497a-a5df-ec7e58688e5a",
+            "source": {
+              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
+            },
+            "target": {
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "pH / water flow",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "6084835d-5258-4ce1-ac54-fbea3892320f",
+                  "threatId": "feda0f68-b6f3-413d-bc8f-6c357b49af37",
+                  "number": 3,
+                  "title": "Fake sensor",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "An attacker could replace a sensor with a fake device that sends false pH or water flow values. The controller could use these values and cause incorrect chemical dosing.",
+                  "mitigation": "Restrict physical access to sensors and their cables. Check that connected sensors are approved devices. Compare measurements with a separate sensor to detect false values.",
+                  "new": false
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "pH / water flow"
+            ],
+            "id": "25a5cc68-18bb-41e0-889b-62614a5269b3",
+            "source": {
+              "cell": "a3b120ca-eb71-4919-8ed5-58ed343fa81f"
+            },
+            "target": {
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "Data",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
@@ -1723,28 +1763,35 @@
                   "id": "4aedb8f5-4c0d-4a42-9511-10195dff4b1f",
                   "threatId": "94997b4f-1fde-422d-ad2f-b37f6f938686",
                   "number": 10,
-                  "title": "T10 Public operational information",
+                  "title": "Public process data",
                   "type": "Information disclosure",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "The publicly accessible screen exposes process values and operating context, helping an outsider understand the plant. This exposure is supported by the assignment.",
-                  "mitigation": "Remove public access and enforce least-privilege viewing; publish only a separately filtered summary if public information is necessary."
+                  "description": "The public interface shows pH, water flow and chemical dosing values. An unauthorised person could use this information to learn how the plant operates.",
+                  "mitigation": "Remove public access to the interface. Require login and only let authorised users view process data.",
+                  "new": false
                 },
                 {
                   "id": "5e7f5f75-96b3-4e0b-8884-d2cdfe745a8a",
                   "threatId": "6de34d3c-9e88-49a4-af93-42754ab1516c",
                   "number": 11,
-                  "title": "T11 Intercepted remote display",
+                  "title": "Reading network data",
                   "type": "Information disclosure",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "If remote-display traffic is unencrypted, an on-path attacker can read screens and session information. Encryption is not confirmed by the screenshot.",
-                  "mitigation": "Require TLS or an encrypted VPN with endpoint verification; disable direct unprotected remote-display access."
+                  "description": "If the connection is not encrypted, an attacker on the network could read the data sent to the user. This could reveal pH, water flow and dosing values.",
+                  "mitigation": "Encrypt the connection using TLS or a VPN. Check the server's identity before connecting.",
+                  "new": false
                 }
               ],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Data"
