@@ -236,12 +236,12 @@
             },
             "attrs": {
               "text": {
-                "text": "Web HMI /\nremote display"
+                "text": "Web interface"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "strokeDasharray": ""
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
               },
               "topLine": {
                 "stroke": "#333333",
@@ -339,7 +339,7 @@
             },
             "id": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923",
             "data": {
-              "name": "Web HMI /\nremote display",
+              "name": "Web interface",
               "description": "Visible interface. RFB metadata suggests remote display; exact implementation is unknown.",
               "type": "tm.Process",
               "isTrustBoundary": false,
