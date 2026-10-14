@@ -343,7 +343,7 @@
                   "id": "1a5a691a-eedd-4517-9403-dd84e48ab195",
                   "threatId": "525565aa-b2eb-427b-a228-7e4be10056a6",
                   "number": 1,
-                  "title": "T01 Unauthenticated remote viewer",
+                  "title": "No login",
                   "type": "Spoofing",
                   "modelType": "STRIDE",
                   "severity": "High",
@@ -394,7 +394,7 @@
               ],
               "hasOpenThreats": true,
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 2,
                 "tampering": 0,
                 "repudiation": 2,
                 "informationDisclosure": 0,
@@ -547,20 +547,20 @@
                   "severity": "Medium",
                   "status": "Open",
                   "description": "An attacker with access to the server could delete logs to hide their actions. This would make it difficult to find out what happened and who was responsible.",
-                  "mitigation": "Use firewall rules to allow only necessary connections to the controller. Limit network traffic and keep local pump control working if the server connection is lost.",
+                  "mitigation": "Send copies of the logs to a separate server. Restrict access so users on the SCADA server cannot change or delete these copies.",
                   "new": false
                 },
                 {
                   "id": "8dcef9a2-be3a-48cd-a133-190794555f63",
                   "threatId": "3bc0a017-1483-4aae-be57-75c453f4f078",
                   "number": 17,
-                  "title": "Changing controller program",
+                  "title": "Getting admin access",
                   "type": "Elevation of privilege",
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "If programming access is not restricted, someone with network access could gain permission to change the controller program. This could change how the pump operates and cause incorrect dosing.",
-                  "mitigation": "Require authentication and only allow approved administrator accounts to change the program. Use firewall rules to allow programming connections only from approved computers.",
+                  "description": "If the SCADA software runs with administrator permissions, an attacker who exploits a weakness in it could gain administrator access to the server. They could then change settings or stop the software.",
+                  "mitigation": "Run the SCADA software with only the permissions it needs. Test and install security updates, and restrict administrator access.",
                   "new": false
                 }
               ],
@@ -568,10 +568,10 @@
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
-                "repudiation": 3,
+                "repudiation": 4,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 1
+                "elevationOfPrivilege": 2
               }
             }
           },
