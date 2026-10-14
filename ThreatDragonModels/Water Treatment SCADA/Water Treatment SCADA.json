@@ -30,7 +30,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "TB2 Supervisory / local control",
+              "name": "External access",
               "description": "Analytical trust boundary, not evidence of an installed firewall.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -38,23 +38,16 @@
               "containedElements": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "TB2 Supervisory / local control"
-                  }
-                },
-                "position": 0.15
-              }
+              "External access"
             ],
-            "id": "551d0325-f4d0-438e-944a-c3e97479b391",
+            "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
             "source": {
-              "x": 30,
-              "y": 510
+              "x": 320,
+              "y": 30
             },
             "target": {
-              "x": 990,
-              "y": 510
+              "x": 320,
+              "y": 245
             },
             "vertices": []
           },
@@ -72,7 +65,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "TB1 External access / supervisory system",
+              "name": "Control system",
               "description": "Analytical trust boundary, not evidence of an installed firewall.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -80,16 +73,16 @@
               "containedElements": []
             },
             "labels": [
-              "TB1 External access / supervisory system"
+              "Control system"
             ],
-            "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
+            "id": "551d0325-f4d0-438e-944a-c3e97479b391",
             "source": {
-              "x": 320,
-              "y": 30
+              "x": 30,
+              "y": 510
             },
             "target": {
-              "x": 320,
-              "y": 245
+              "x": 990,
+              "y": 510
             },
             "vertices": []
           },
