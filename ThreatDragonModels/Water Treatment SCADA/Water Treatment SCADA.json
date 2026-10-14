@@ -3,7 +3,7 @@
   "summary": {
     "title": "Water Treatment SCADA",
     "owner": "Tarek",
-    "description": "Screenshot-based conceptual model. Observed: public interface, pH/flow/dosing, Pump 2, Auto, history and RFB Authentication disabled. Assumed: backend, PLC, sensors, historian and writable control paths (*). RFB access permissions, protocols, segmentation and safety controls are unverified. Boundaries express trust changes, not confirmed firewalls. Encryption flags are not evidence of absent encryption. All threats remain Open because controls are proposed, not verified."
+    "description": "The system monitors water treatment. The web interface shows pH, water flow, chemical dosing, pump status and historical data. This model uses STRIDE to identify threats and suggest security controls.\n\nThe internal components and connections are assumed based on the screenshot. It does not confirm whether users can change settings. The dashed lines show trust boundaries, not confirmed firewalls. All threats are Open because the controls are proposed, not implemented."
   },
   "detail": {
     "contributors": [],
@@ -11,7 +11,7 @@
       {
         "version": "2.6.2",
         "title": "Water Treatment SCADA DFD",
-        "description": "Screenshot-based conceptual model. Observed: public interface, pH/flow/dosing, Pump 2, Auto, history and RFB Authentication disabled. Assumed: backend, PLC, sensors, historian and writable control paths (*). RFB access permissions, protocols, segmentation and safety controls are unverified. Boundaries express trust changes, not confirmed firewalls. Encryption flags are not evidence of absent encryption. All threats remain Open because controls are proposed, not verified.",
+        "description": "The diagram shows data moving between the user, web interface, SCADA server, database, controller, sensors and Pump 2. Internal components and connections are assumed from the screenshot.",
         "diagramType": "STRIDE",
         "id": 0,
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
