@@ -30,41 +30,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "TB1 External access / supervisory system",
-              "description": "Analytical trust boundary, not evidence of an installed firewall.",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": []
-            },
-            "labels": [
-              "TB1 External access / supervisory system"
-            ],
-            "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
-            "source": {
-              "x": 320,
-              "y": 25
-            },
-            "target": {
-              "x": 320,
-              "y": 245
-            },
-            "vertices": []
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "attrs": {
-              "line": {
-                "targetMarker": "",
-                "sourceMarker": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 1,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
               "name": "TB2 Supervisory / local control",
               "description": "Analytical trust boundary, not evidence of an installed firewall.",
               "isTrustBoundary": true,
@@ -94,6 +59,41 @@
             "vertices": []
           },
           {
+            "shape": "trust-boundary-curve",
+            "attrs": {
+              "line": {
+                "targetMarker": "",
+                "sourceMarker": ""
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "TB1 External access / supervisory system",
+              "description": "Analytical trust boundary, not evidence of an installed firewall.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "TB1 External access / supervisory system"
+            ],
+            "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
+            "source": {
+              "x": 320,
+              "y": 30
+            },
+            "target": {
+              "x": 320,
+              "y": 245
+            },
+            "vertices": []
+          },
+          {
             "position": {
               "x": 30,
               "y": 60
@@ -108,8 +108,8 @@
               },
               "body": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
-                "strokeDasharray": ""
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
               },
               "topLine": {
                 "stroke": "#333333",
@@ -348,47 +348,59 @@
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "If the displayed RFB authentication setting applies to live access, an outsider can connect without proving identity and impersonate an authorised viewer.",
-                  "mitigation": "Remove public remote access; require VPN or an access gateway with MFA and named accounts. Disable unauthenticated RFB access."
+                  "description": "The screenshot shows \"Authentication disabled\". If this applies to remote access, someone could connect without logging in. The system would not know whether the person is an authorised user.",
+                  "mitigation": "Require a username and password for each user. Only allow authorised users to access the interface and remove public access.",
+                  "new": false
                 },
                 {
                   "id": "28ec40a3-9efe-4339-81f3-91130e00f46e",
                   "threatId": "66170e67-54cf-412b-b77d-df021b754bcb",
                   "number": 8,
-                  "title": "T08 Untraceable remote sessions",
+                  "title": "Missing login logs",
                   "type": "Repudiation",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "With anonymous or shared remote access, investigators cannot reliably associate a session with a person.",
-                  "mitigation": "Require individual authenticated sessions and log session start/end, source and actions; protect logs and apply a retention policy."
+                  "description": "If access is not logged and users do not have separate accounts, it can be difficult to know who accessed the interface. A user could deny having used it.",
+                  "mitigation": "Give each user a separate account. Log successful and failed logins with the username and time. Only allow authorised administrators to change or delete the logs.",
+                  "new": false
                 },
                 {
                   "id": "ea802e6c-8470-4b6a-941c-f29ec0318050",
                   "threatId": "f5a235be-6982-4f76-8110-1bebd51a1651",
                   "number": 13,
-                  "title": "T13 Remote access service overload",
+                  "title": "Too many requests",
                   "type": "Denial of service",
                   "modelType": "STRIDE",
                   "severity": "Medium",
                   "status": "Open",
-                  "description": "Repeated connections or requests can exhaust the remote-display service, preventing operators from viewing alarms.",
-                  "mitigation": "Restrict access, limit sessions and request rates, monitor resource use and retain a tested local operator interface."
+                  "description": "An attacker could send many requests to the web interface. This could make it slow or unavailable, preventing operators from seeing measurements and alarms.",
+                  "mitigation": "Limit the number of requests and connections from each user. Restrict access to authorised users and keep a local interface available for operators.",
+                  "new": false
                 },
                 {
                   "id": "1245ff9a-a8aa-4964-a6ff-ec1405d1bf28",
                   "threatId": "2143a3f3-c846-4f40-ae1a-1831ea728134",
                   "number": 16,
-                  "title": "T16 Viewer gains control privileges",
+                  "title": "Wrong user permissions",
                   "type": "Elevation of privilege",
                   "modelType": "STRIDE",
                   "severity": "High",
                   "status": "Open",
-                  "description": "If backend authorisation is missing, a viewer can invoke write functions and become an effective operator. A writable interface is an assumption.",
-                  "mitigation": "Separate viewer/operator/admin roles; authorise every write in the backend and disable control functions on externally accessible viewing services."
+                  "description": "If the interface allows changes and user permissions are not checked, a user who should only view data could change pump settings. This could cause incorrect chemical dosing.",
+                  "mitigation": "Separate users who can view data from users who can change settings. The SCADA server must check user permissions before accepting any change.",
+                  "new": false
                 }
               ],
-              "hasOpenThreats": true
+              "hasOpenThreats": true,
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -1131,86 +1143,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": true,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "4aedb8f5-4c0d-4a42-9511-10195dff4b1f",
-                  "threatId": "94997b4f-1fde-422d-ad2f-b37f6f938686",
-                  "number": 10,
-                  "title": "T10 Public operational information",
-                  "type": "Information disclosure",
-                  "modelType": "STRIDE",
-                  "severity": "Medium",
-                  "status": "Open",
-                  "description": "The publicly accessible screen exposes process values and operating context, helping an outsider understand the plant. This exposure is supported by the assignment.",
-                  "mitigation": "Remove public access and enforce least-privilege viewing; publish only a separately filtered summary if public information is necessary."
-                },
-                {
-                  "id": "5e7f5f75-96b3-4e0b-8884-d2cdfe745a8a",
-                  "threatId": "6de34d3c-9e88-49a4-af93-42754ab1516c",
-                  "number": 11,
-                  "title": "T11 Intercepted remote display",
-                  "type": "Information disclosure",
-                  "modelType": "STRIDE",
-                  "severity": "Medium",
-                  "status": "Open",
-                  "description": "If remote-display traffic is unencrypted, an on-path attacker can read screens and session information. Encryption is not confirmed by the screenshot.",
-                  "mitigation": "Require TLS or an encrypted VPN with endpoint verification; disable direct unprotected remote-display access."
-                }
-              ],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Data"
-            ],
-            "id": "4d9b10c5-f616-414a-b2b9-596d5aece674",
-            "source": {
-              "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
-            },
-            "target": {
-              "cell": "5f30ac1f-193d-4337-a6a6-d043f4043b11"
-            },
-            "vertices": [
-              {
-                "x": 320,
-                "y": 190
-              },
-              {
-                "x": 160,
-                "y": 230
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -1754,6 +1686,91 @@
               "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
             },
             "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "4aedb8f5-4c0d-4a42-9511-10195dff4b1f",
+                  "threatId": "94997b4f-1fde-422d-ad2f-b37f6f938686",
+                  "number": 10,
+                  "title": "T10 Public operational information",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "severity": "Medium",
+                  "status": "Open",
+                  "description": "The publicly accessible screen exposes process values and operating context, helping an outsider understand the plant. This exposure is supported by the assignment.",
+                  "mitigation": "Remove public access and enforce least-privilege viewing; publish only a separately filtered summary if public information is necessary."
+                },
+                {
+                  "id": "5e7f5f75-96b3-4e0b-8884-d2cdfe745a8a",
+                  "threatId": "6de34d3c-9e88-49a4-af93-42754ab1516c",
+                  "number": 11,
+                  "title": "T11 Intercepted remote display",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "severity": "Medium",
+                  "status": "Open",
+                  "description": "If remote-display traffic is unencrypted, an on-path attacker can read screens and session information. Encryption is not confirmed by the screenshot.",
+                  "mitigation": "Require TLS or an encrypted VPN with endpoint verification; disable direct unprotected remote-display access."
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Data"
+            ],
+            "id": "4d9b10c5-f616-414a-b2b9-596d5aece674",
+            "source": {
+              "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
+            },
+            "target": {
+              "cell": "5f30ac1f-193d-4337-a6a6-d043f4043b11",
+              "port": "56e847ff-f9f5-4cdb-b62e-c93e51ac683b"
+            },
+            "vertices": [
+              {
+                "x": 400,
+                "y": 190
+              },
+              {
+                "x": 310,
+                "y": 230
+              },
+              {
+                "x": 160,
+                "y": 230
+              }
+            ]
           }
         ]
       }
