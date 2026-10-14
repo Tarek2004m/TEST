@@ -38,14 +38,7 @@
               "containedElements": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "TB1 External access / supervisory system"
-                  }
-                },
-                "position": 0.15
-              }
+              "TB1 External access / supervisory system"
             ],
             "id": "ae69990a-106d-4fb0-953e-44b462bfda6b",
             "source": {
@@ -541,7 +534,8 @@
                   "severity": "Medium",
                   "status": "Open",
                   "description": "A compromised backend can delete local audit records and prevent reliable reconstruction of events.",
-                  "mitigation": "Forward logs promptly to a separate restricted collector with append-only retention and alert on gaps or time changes."
+                  "mitigation": "Forward logs promptly to a separate restricted collector with append-only retention and alert on gaps or time changes.",
+                  "new": false
                 },
                 {
                   "id": "8dcef9a2-be3a-48cd-a133-190794555f63",
@@ -556,7 +550,15 @@
                   "mitigation": "Patch through a tested OT change process, run as a restricted service account and restrict executable code and management interfaces."
                 }
               ],
-              "hasOpenThreats": true
+              "hasOpenThreats": true,
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
