@@ -1129,12 +1129,15 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
-                "strokeDasharray": ""
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
             "width": 200,
@@ -1143,57 +1146,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F1 View / input requests",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": true,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F1 View / input requests"
-                  }
-                },
-                "position": 0.5
-              }
-            ],
-            "id": "9d261b58-0fd0-4e39-b4a9-6c015c3ef3df",
-            "source": {
-              "cell": "5f30ac1f-193d-4337-a6a6-d043f4043b11"
-            },
-            "target": {
-              "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "F2 Screen / process values",
+              "name": "Data",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1232,14 +1185,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F2 Screen / process values"
-                  }
-                },
-                "position": 0.5
-              }
+              "Data"
             ],
             "id": "4d9b10c5-f616-414a-b2b9-596d5aece674",
             "source": {
@@ -1264,11 +1210,13 @@
             "attrs": {
               "line": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
                 "targetMarker": {
                   "name": "block"
                 },
-                "strokeDasharray": ""
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
             "width": 200,
@@ -1277,7 +1225,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F3 Queries / commands*",
+              "name": "Request / settings",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1291,14 +1239,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F3 Queries / commands*"
-                  }
-                },
-                "position": 0.5
-              }
+              "Request / settings"
             ],
             "id": "afeabab8-8315-45fe-97ee-bfc79a1dd58a",
             "source": {
@@ -1314,11 +1255,13 @@
             "attrs": {
               "line": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
                 "targetMarker": {
                   "name": "block"
                 },
-                "strokeDasharray": ""
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
             "width": 200,
@@ -1327,7 +1270,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F4 Values / alarms",
+              "name": "Data",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1341,14 +1284,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F4 Values / alarms"
-                  }
-                },
-                "position": 0.5
-              }
+              "Data"
             ],
             "id": "3a08a3fb-1026-4cb4-96b7-eec6b1b9fd7d",
             "source": {
@@ -1373,11 +1309,13 @@
             "attrs": {
               "line": {
                 "stroke": "#333333",
-                "strokeWidth": 1,
                 "targetMarker": {
                   "name": "block"
                 },
-                "strokeDasharray": ""
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
             "width": 200,
@@ -1386,7 +1324,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F5 Record / query history",
+              "name": "Stored data",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1400,64 +1338,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F5 Record / query history"
-                  }
-                },
-                "position": 0.5
-              }
-            ],
-            "id": "27173705-b36e-4247-a8af-7e2e00e132b5",
-            "source": {
-              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
-            },
-            "target": {
-              "cell": "80153f24-b900-4525-8d28-24df7ffa20af"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "F6 Historical values",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F6 Historical values"
-                  }
-                },
-                "position": 0.5
-              }
+              "Stored data"
             ],
             "id": "f24a87a7-680c-412a-9dfe-b715a56e3cd2",
             "source": {
@@ -1481,12 +1362,15 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
-                "strokeDasharray": ""
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
             "width": 200,
@@ -1495,7 +1379,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F7 Setpoints / mode*",
+              "name": "Settings",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1522,14 +1406,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F7 Setpoints / mode*"
-                  }
-                },
-                "position": 0.5
-              }
+              "Settings"
             ],
             "id": "13e193c6-b4d0-497a-a5df-ec7e58688e5a",
             "source": {
@@ -1544,12 +1421,15 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
-                "strokeDasharray": ""
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
               }
             },
             "width": 200,
@@ -1558,183 +1438,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "F9 pH / flow measurements",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "6084835d-5258-4ce1-ac54-fbea3892320f",
-                  "threatId": "feda0f68-b6f3-413d-bc8f-6c357b49af37",
-                  "number": 3,
-                  "title": "T03 Substituted sensor source",
-                  "type": "Spoofing",
-                  "modelType": "STRIDE",
-                  "severity": "High",
-                  "status": "Open",
-                  "description": "A replaced or emulated sensor can supply plausible but false pH or flow values, causing incorrect dosing.",
-                  "mitigation": "Protect cabinets and wiring; inventory sensor identities; check calibration and compare redundant sensors."
-                }
-              ],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F9 pH / flow measurements"
-                  }
-                },
-                "position": 0.5
-              }
-            ],
-            "id": "25a5cc68-18bb-41e0-889b-62614a5269b3",
-            "source": {
-              "cell": "a3b120ca-eb71-4919-8ed5-58ed343fa81f"
-            },
-            "target": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "F10 Dosing control",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F10 Dosing control"
-                  }
-                },
-                "position": 0.5
-              }
-            ],
-            "id": "73fb669f-2786-4dbc-ac96-7e4736042341",
-            "source": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
-            },
-            "target": {
-              "cell": "a473ce1f-676f-4a73-a220-7b077afb775b"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "F11 Pump status*",
-              "description": "Logical data flow; protocol and deployed protections are unverified.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F11 Pump status*"
-                  }
-                },
-                "position": 0.5
-              }
-            ],
-            "id": "d5d1b215-b2ed-475f-be98-719f84e19c89",
-            "source": {
-              "cell": "a473ce1f-676f-4a73-a220-7b077afb775b"
-            },
-            "target": {
-              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
-            },
-            "vertices": [
-              {
-                "x": 610,
-                "y": 800
-              },
-              {
-                "x": 690,
-                "y": 760
-              },
-              {
-                "x": 690,
-                "y": 650
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "strokeWidth": 1,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": ""
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 3,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "F8 Measurements / status",
+              "name": "Measurements",
               "description": "Logical data flow; protocol and deployed protections are unverified.",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1773,14 +1477,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              {
-                "attrs": {
-                  "label": {
-                    "text": "F8 Measurements / status"
-                  }
-                },
-                "position": 0.5
-              }
+              "Measurements"
             ],
             "id": "1a5fc703-5510-4944-8d1f-9de6cb72a150",
             "source": {
@@ -1803,6 +1500,258 @@
                 "y": 440
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Save / read data",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Save / read data"
+            ],
+            "id": "27173705-b36e-4247-a8af-7e2e00e132b5",
+            "source": {
+              "cell": "c9cceeb4-9d4a-416c-86f6-c52b13c89728"
+            },
+            "target": {
+              "cell": "80153f24-b900-4525-8d28-24df7ffa20af"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "pH / water flow",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "6084835d-5258-4ce1-ac54-fbea3892320f",
+                  "threatId": "feda0f68-b6f3-413d-bc8f-6c357b49af37",
+                  "number": 3,
+                  "title": "T03 Substituted sensor source",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "severity": "High",
+                  "status": "Open",
+                  "description": "A replaced or emulated sensor can supply plausible but false pH or flow values, causing incorrect dosing.",
+                  "mitigation": "Protect cabinets and wiring; inventory sensor identities; check calibration and compare redundant sensors."
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "pH / water flow"
+            ],
+            "id": "25a5cc68-18bb-41e0-889b-62614a5269b3",
+            "source": {
+              "cell": "a3b120ca-eb71-4919-8ed5-58ed343fa81f"
+            },
+            "target": {
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Pump commands",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Pump commands"
+            ],
+            "id": "73fb669f-2786-4dbc-ac96-7e4736042341",
+            "source": {
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
+            },
+            "target": {
+              "cell": "a473ce1f-676f-4a73-a220-7b077afb775b"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Pump status",
+              "description": "Logical data flow; protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Pump status"
+            ],
+            "id": "d5d1b215-b2ed-475f-be98-719f84e19c89",
+            "source": {
+              "cell": "a473ce1f-676f-4a73-a220-7b077afb775b"
+            },
+            "target": {
+              "cell": "523b07dc-26c4-4c9a-b319-38c69866d55d"
+            },
+            "vertices": [
+              {
+                "x": 610,
+                "y": 800
+              },
+              {
+                "x": 690,
+                "y": 760
+              },
+              {
+                "x": 690,
+                "y": 650
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 3,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Request",
+              "description": "Logical data flow, protocol and deployed protections are unverified.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Request"
+            ],
+            "id": "9d261b58-0fd0-4e39-b4a9-6c015c3ef3df",
+            "source": {
+              "cell": "5f30ac1f-193d-4337-a6a6-d043f4043b11"
+            },
+            "target": {
+              "cell": "9ab6209b-ecf8-47b8-946d-4e07bfa3d923"
+            },
+            "vertices": []
           }
         ]
       }
